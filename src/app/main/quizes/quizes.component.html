@@ -1,0 +1,110 @@
+<mat-card *ngIf="!next">
+  <div class="questions">
+    <ul class="list-group list-group-flush" *ngFor="let question of allQuestion ; index as i">
+      <div *ngIf="qnsCount == i">
+        <div *ngIf="question.department=='CS'||'IT'">
+          <h2 class="text-center">{{i+1}} of {{allQuestion.length}}</h2>
+          <div>
+            <li class="list-group-item"><label id="example-radio-group-label"> <b>
+                  <h1>Q {{i+1}}.</h1> {{question.question}}
+                </b><br></label><span class="marks">Points = 2</span></li>
+
+            <li class="list-group-item qns">a. <mat-radio-button [disabled]="option"
+                [ngClass]="{'highlight': selectedIndex == question.option1}" (change)="userans(i,question.option1)"
+                [name]="'opta'+i" class="example-radio-button">
+                <div class="opt">{{question.option1}}</div>
+              </mat-radio-button>
+            </li>
+
+            <li class="list-group-item qns">b. <mat-radio-button [disabled]="option"
+                [ngClass]="{'highlight': selectedIndex == question.option2}" (change)="userans(i,question.option2)"
+                [name]="'opta'+i" class="example-radio-button"> {{question.option2}} </mat-radio-button>
+            </li>
+            <li class="list-group-item qns">c. <mat-radio-button [disabled]="option"
+                [ngClass]="{'highlight': selectedIndex ==question.option3}" (change)="userans(i,question.option3)"
+                [name]="'opta'+i" class="example-radio-button"> {{question.option3}} </mat-radio-button>
+            </li>
+            <li class="list-group-item qns">d. <mat-radio-button [disabled]="option"
+                [ngClass]="{'highlight': selectedIndex == question.option4}" (change)="userans(i,question.option4)"
+                [name]="'opta'+i" class="example-radio-button"> {{question.option4}} </mat-radio-button>
+            </li>
+          </div>
+
+        </div>
+      </div>
+    </ul>
+
+    <!-- <button class="quizbtn" mat-raised-button color="" (click)="QuizSubmit()" [disabled]="qnsCount != arrayLength">Submit</button> -->
+    <button *ngIf="!next" class="quizbtn" mat-raised-button color="" (click)="nextQns()"
+      [disabled]="qnsCount == arrayLength">Next</button>
+    <br>
+  </div>
+</mat-card>
+<div *ngIf="next">
+  <mat-card class="q-login">
+    <mat-card>
+      <div>
+        <h1><span>{{userprofile[0].userid}}!</span> Your Quiz is Completed Successfully!</h1>
+      </div>
+      <h1>Your Result</h1>
+      <p>Correct Answer : {{correct}}</p>
+      <p>Incorrect Answer : {{incorrect}}</p>
+      <p>Your Total Score : {{correct*2}}</p>
+    </mat-card>
+    <div *ngIf="marks==true" class="correct">
+
+
+      <H1>Restart The Quiz</H1>
+      <button mat-fab>
+        <mat-icon aria-hidden="false" aria-label="Example restart_alt icon" (click)="restart()">restart_alt</mat-icon>
+      </button>
+    </div>
+
+    <mat-card>
+      <h1>Leaderboard</h1>
+      <table  class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usr of allUser ; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{usr.userid}}</td>
+            <td>{{usr.quizmarks}}</td>
+            <td>Rank</td>
+          </tr>
+        </tbody>
+      </table>
+      </mat-card>
+  </mat-card>
+</div>
+
+<!-- <mat-card *ngIf="next" class="usr-ans">
+  <h1>Result</h1>
+  <ul class="list-group list-group-flush" *ngFor="let question of allQuestion ; index as i">
+    <div *ngIf="question.department=='CS'||'IT'">
+      
+      <li class="list-group-item"><label id="example-radio-group-label"> <b><h1>Q {{i+1}}.</h1> {{question.question}}
+          </b><br></label><span class="marks">Points = 2</span></li>
+
+      <li class="list-group-item qns">a. <mat-radio-button (change)="userans(i,question.option1)" [name]="'opta'+i"
+          class="example-radio-button"> <div class="opt">{{question.option1}}</div></mat-radio-button>
+      </li>
+
+      <li class="list-group-item qns">b. <mat-radio-button (change)="userans(i,question.option2)" [name]="'opta'+i"
+          class="example-radio-button"> {{question.option2}} </mat-radio-button>
+      </li>
+      <li class="list-group-item qns">c. <mat-radio-button (change)="userans(i,question.option3)" [name]="'opta'+i"
+          class="example-radio-button"> {{question.option3}} </mat-radio-button>
+      </li>
+      <li class="list-group-item qns">d. <mat-radio-button (change)="userans(i,question.option4)" [name]="'opta'+i"
+          class="example-radio-button"> {{question.option4}} </mat-radio-button>
+      </li>
+    </div>
+  </ul>
+</mat-card> -->

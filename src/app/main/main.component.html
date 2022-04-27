@@ -1,0 +1,117 @@
+
+<div class="q-login">
+    <mat-card>
+        <mat-card-title *ngIf="!sign && !forget"> Login </mat-card-title>
+        <mat-card-title *ngIf="sign && !forget"> Sign Up </mat-card-title>
+        <mat-card-title *ngIf="!sign && forget"> Forget Password </mat-card-title>
+
+        <mat-card-content>
+          
+            <!-- Login Form -->
+          <form *ngIf="!sign && !forget" [formGroup]="loginForm" (ngSubmit)="login()" class="example-form">
+              <table class="example-full-width" cellspacing="0">
+                <tr>
+                  <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>E mail</mat-label>
+                      <input matInput [type]=" 'email'" formControlName="email" [pattern]="emailPattern"/>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]=" 'password'" formControlName="password"/>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+              </table>
+            </form>
+            <!-- Login Form -->
+
+            <!-- New User Form -->
+          <form *ngIf="sign && !forget" [formGroup]="userForm" (ngSubmit)="signup()" class="example-form">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>User Name</mat-label>
+                    <input matInput [type]=" 'text'" formControlName="userid"/>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>E mail</mat-label>
+                    <input matInput [type]=" 'email'" formControlName="email"/>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Password</mat-label>
+                      <input matInput [type]=" 'password'" formControlName="password"/>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]=" 'password'" formControlName="cpassword"/>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+            </table>
+          </form>
+          <!-- New User Form -->
+
+          <!-- Forget Password Form -->
+          <form *ngIf="!sign && forget" [formGroup]="loginForm" (ngSubmit)="login()" class="example-form">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>E mail</mat-label>
+                    <input matInput [type]=" 'email'" formControlName="email"/>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                  <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>New Password</mat-label>
+                      <input matInput [type]=" 'password'" formControlName="password"/>
+                    </mat-form-field>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput [type]=" 'password'" formControlName="password"/>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+            </table>
+          </form>
+          <!-- Forget Password Form -->
+        </mat-card-content>
+
+        <mat-card-footer> 
+            <div class="btn-lgn">
+                <button *ngIf="!sign && !forget" class="login" mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                <button *ngIf="!sign && !forget" class="newusr" mat-raised-button color="accent" (click)="newuser()">New User</button>
+                <button *ngIf="!sign && !forget" class="newusr" mat-raised-button color="" (click)="forgetpass()">Forget Password</button>
+
+                <button *ngIf="sign || forget" class="login" type="button" mat-raised-button color="secondary" (click)="clear()">Login</button>
+                <button *ngIf="!sign && forget" class="newusr" type="button" mat-raised-button color="primary">Change Password</button>
+                <button *ngIf="sign" class="newusr" mat-raised-button color="primary" (keyup.enter)="signup()"
+                    (click)="signup()">Sign Up</button>
+            </div>
+        </mat-card-footer>
+      </mat-card>      
+</div>

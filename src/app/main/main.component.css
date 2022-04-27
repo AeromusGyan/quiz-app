@@ -1,0 +1,23 @@
+.example-form {
+    min-width: 100%;
+    max-width: 500px;
+    width: 100%;
+    
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 0px;
+  }
+  .btn-lgn{
+    margin:10px 0px 20px 0px;
+  }
+  .login{
+    margin-left: 30%;
+  }
+  .newusr{
+    margin-left: 10px;
+  }
