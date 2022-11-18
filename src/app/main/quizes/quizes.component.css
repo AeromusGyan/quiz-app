@@ -20,6 +20,7 @@
 }
 .quizbtn{
   margin:10px 550px;
+  border: solid 2px ;
 }
 @media(max-width:800px){
   
@@ -34,3 +35,5 @@ ul li{
   list-style: none;
 }
 .highlight{ background-color: green }
+ul li.btn-left{float: left;margin: 10px;}
+.btn{margin-left: 40%;}

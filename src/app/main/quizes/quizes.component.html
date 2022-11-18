@@ -35,11 +35,20 @@
     </ul>
 
     <!-- <button class="quizbtn" mat-raised-button color="" (click)="QuizSubmit()" [disabled]="qnsCount != arrayLength">Submit</button> -->
-    <button *ngIf="!next" class="quizbtn" mat-raised-button color="" (click)="nextQns()"
-      [disabled]="qnsCount == arrayLength">Next</button>
+    <mat-card>
+      <ul class="btn">
+        <li class="btn-left"> <button [hidden]="qnsCount==0" *ngIf="!next" class="" mat-raised-button color="secondary" (click)="prevQns()"
+          >Previous</button></li>
+        <li class="btn-left"><button *ngIf="!next" class="" mat-raised-button color="primary" (click)="nextQns()"
+          [hidden]="qnsCount == arrayLength-1">Next</button></li>     
+        <li class="btn-left"><button [hidden]="qnsCount != arrayLength-1" *ngIf="!next" class="" mat-raised-button color="primary" (click)="nextQns()"
+            >Submit</button></li>     
+      </ul>
+    </mat-card>
     <br>
   </div>
 </mat-card>
+
 <div *ngIf="next">
   <mat-card class="q-login">
     <mat-card>

@@ -9,8 +9,6 @@ import { MaterialModule } from './material/material.module';
 import { MainModule } from './main/main.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthGuard } from './auth.guard';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +23,7 @@ import { AuthGuard } from './auth.guard';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

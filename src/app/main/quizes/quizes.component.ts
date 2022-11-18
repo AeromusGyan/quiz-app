@@ -138,6 +138,11 @@ export class QuizesComponent implements OnInit {
       this.leaderboard();
     }
   }
+  prevQns(){
+    if(this.qnsCount>0){
+      this.qnsCount--;
+    }
+  }
   restart() {
     window.location.href = '/quizes';
   }
